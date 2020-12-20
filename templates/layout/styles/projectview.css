@@ -1,0 +1,373 @@
+@charset "utf-8";
+input{
+    border-radius: 25px;
+  border: 2px solid #20B2AA;
+}
+input:focus{
+    outline: none;
+}
+textarea{
+	text-align: left;
+}
+
+textarea:focus{
+  outline:none;
+
+	/*outline-color: #ccc;*/
+}
+
+/* ------------------BIDS DETAILS------------------------ */
+.bidsdetails{height: auto; padding: 20px; margin-top:10px;background:#DCDCDC; border:1px solid #D6D6D6;}
+.bidleft{float:left; height: auto; box-sizing: border-box; overflow:hidden; }
+.bidright{float:right; height: auto; box-sizing: border-box; overflow:hidden; }
+
+/* ------------------BOX BORDER DIV------------------------ */
+
+.boxborder{}
+.leftside{height: auto; padding-top:0 !important; box-sizing: border-box; overflow:hidden; width:33%; padding:20px;  float:left;}
+.rightside{height: auto; margin:10px; box-sizing: border-box; margin-top:none; background-color:#DCDCDC;overflow:hidden;margin-left: 35%;}
+
+.leftside .aboutemployer{padding:20px;background:#DCDCDC; border:1px solid #D6D6D6;}
+
+/* ------------------PROJECT DETAILS----------------------- */
+
+.projectdetails{height:auto;padding:20px;background-color:#DCDCDC; border:1px solid #D6D6D6;}
+.bidswriting{margin-top:20px;height:auto;padding:20px;background-color:#DCDCDC; border:1px solid #D6D6D6;}
+.placebids{height:auto;padding:20px;background-color:#DCDCDC; border:1px solid #D6D6D6; overflow:hidden ;}
+.leftsidebids{height: auto; box-sizing: border-box; overflow:hidden; width:50%; padding-right:20px; padding-left: 20px; padding-bottom: 20px;  float:left;}
+.rightsidebids{height: auto; box-sizing: border-box; margin-top:none; overflow:hidden;margin-left: 50%;}
+
+.placebids input{
+  margin-bottom: 10px;
+padding:5px;
+border: 1px solid #ccc;
+border-radius: 3px;
+}
+
+
+.bid-text{
+	position:relative;
+}
+.bid-text input{
+	padding:5px 5px 5px 50px !important;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+
+}
+
+.bid-text input:active{
+	outline:none;
+}
+
+
+.static-value{
+	position:absolute;
+	left:10px;
+	color:#20B2AA;
+	top:9px;
+}
+
+.static-value_new{
+	position:absolute;
+	left:10px;
+	color:#20B2AA;
+	top:9px;
+}
+
+.proposaldetails{height:auto;padding:20px;background-color:#DCDCDC;}
+
+.projectmilestones{height:auto;padding:20px;background-color:#DCDCDC;}
+
+.placebidbutton{height:auto;padding:20px;float:right;overflow:hidden; margin-top: 20px; margin-bottom: 30px}
+
+
+/* ------------------show proposals------------------------ */
+
+.bidders{margin-top:20px;height:auto;padding:20px;background:#DCDCDC; border:1px solid #D6D6D6;}
+
+/* ------------------BROWSE PROJECTS PAGE------------------------ */
+
+.leftsidebrowse{height: auto; margin-top:0 !important; padding-top:10px;box-sizing: border-box; overflow:hidden; width:24%; float:left;}
+.rightsidebrowse{height: auto; box-sizing: border-box; margin-top:none; overflow:hidden;margin-left: 26%; padding-top:10px;}
+.skills{height:auto; padding:10px; background:#DCDCDC; border:1px solid #D6D6D6;}
+
+/* ------------------PEICE SLIDER=----------------------- */
+
+
+.slider-labels {
+  margin-top: 10px;
+}
+
+/* Functional styling;
+ * These styles are required for noUiSlider to function.
+ * You don't need to change these rules to apply your design.
+ */
+.noUi-target,.noUi-target * {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -ms-touch-action: none;
+  touch-action: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.noUi-target {
+  position: relative;
+  direction: ltr;
+  font-size: 14px;
+}
+
+.noUi-base {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+/* Fix 401 */
+}
+
+.noUi-origin {
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.noUi-handle {
+  position: relative;
+  z-index: 1;
+}
+
+.noUi-stacking .noUi-handle {
+/* This class is applied to the lower origin when
+   its values is > 50%. */
+  z-index: 10;
+}
+
+.noUi-state-tap .noUi-origin {
+  -webkit-transition: left 0.3s,top .3s;
+  transition: left 0.3s,top .3s;
+}
+
+.noUi-state-drag * {
+  cursor: inherit !important;
+}
+
+/* Painting and performance;
+ * Browsers can paint handles in their own layer.
+ */
+.noUi-base,.noUi-handle {
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+}
+
+/* Slider size and handle placement;
+ */
+.noUi-horizontal {
+  height: 4px;
+}
+
+.noUi-horizontal .noUi-handle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  left: -7px;
+  top: -7px;
+  background-color: gray;
+}
+
+/* Styling;
+ */
+.noUi-background {
+  background: #D6D6D6;
+}
+
+.noUi-connect {
+  background: #20B2AA;
+  -webkit-transition: background 450ms;
+  transition: background 450ms;
+}
+
+.noUi-origin {
+  border-radius: 2px;
+}
+
+.noUi-target {
+  border-radius: 2px;
+}
+
+.noUi-target.noUi-connect {
+}
+
+/* Handles and cursors;
+ */
+.noUi-draggable {
+  cursor: w-resize;
+}
+
+.noUi-vertical .noUi-draggable {
+  cursor: n-resize;
+}
+
+.noUi-handle {
+  cursor: default;
+  -webkit-box-sizing: content-box !important;
+  -moz-box-sizing: content-box !important;
+  box-sizing: content-box !important;
+}
+
+.noUi-handle:active {
+  border: 8px solid #20B2AA;
+  border: 8px solid rgba(53,93,187,0.38);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  left: -14px;
+  top: -14px;
+}
+
+/* Disabled state;
+ */
+[disabled].noUi-connect,[disabled] .noUi-connect {
+  background: #B8B8B8;
+}
+
+[disabled].noUi-origin,[disabled] .noUi-handle {
+  cursor: not-allowed;
+}
+
+
+/*search project by
+ */
+.custom-select {
+  margin-bottom:10px;
+  margin-top:10px;
+  position: relative;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  float:left;
+  display: inline;
+
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+.select-selected {
+  background-color: #20B2AA;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: #20B2AA;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+    border-radius: 25px;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+}
+
+/*text bar with search*/
+.browseprojsearch{
+  font-size: 14px;
+  margin-bottom:10px;
+  margin-top:10px;
+  position: relative; 
+  padding-right:none !important;
+  text-align:right;
+  padding-top:20px;
+  display: inline;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+}
+
+
+.browseprojsearch input[type="text"] {
+  position: relative; 
+  border-top-right-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+  border-bottom-left-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  margin-bottom:10px;
+  margin-top:10px;
+  border: 2px solid #20B2AA;
+  padding: 15px;
+  width: 350px;
+  height: 38px !important;
+  outline:none;
+}
+
+.browseprojsearch input { font-family: 'FontAwesome', Arial; } /* This is for the placeholder */
+
+.browseprojsearch button {  
+  margin-bottom:10px;
+  margin-top:10px;
+  position: relative;
+  border-radius: 25px;
+  display: inline;
+  width: 100px;
+  height: 38px !important;
+  }
+
+.browseprojsearch:before {
+    font-family: 'FontAwesome', Arial;
+    color:#20B2AA;
+    position: relative;
+    padding: 5px;
+    margin:1px;
+    font-size: 14px;
+  
+}
+
+
+

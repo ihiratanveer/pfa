@@ -1,0 +1,30 @@
+                      <div class="pagination">
+                      {% if projects.has_other_pages %}
+
+                        <ul >                            
+                        {% if projects.has_previous %}
+
+                          <li class="prev"><a href="?page={{ projects.previous_page_number }}"> &laquo Previous</a></li>
+                              {% else %}
+                                <li class="disabled"><span>Previous</span></li>
+                         {% endif %}
+
+
+                          {% for i in projects.paginator.page_range %}
+                                {% if projects.number == i %}
+                                      <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+
+                                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+
+                           {% endfor %}
+                           
+                           {% if projects.has_next %}
+                                  <li class='next'><a href="?page={{ projects.next_page_number }}">Next &raquo</a></li>
+                               {% else %}
+                                  <li class="disabled"><span>Next</span></li>
+                           {% endif %}
+                        </ul>
+                      {% endif %}
+                      </div>

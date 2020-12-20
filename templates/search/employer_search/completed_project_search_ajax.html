@@ -1,0 +1,70 @@
+                    <table>
+                      <thead>
+                        <tr class="table100-head">
+                          <th class="column1">Sr. No.</th>
+                          <th class="column2">Project Name</th>
+                          <th class="column3">Project Details</th>
+                          <th class="column4">Deadline</th>
+                          <th class="column5">Payment</th>
+                          <th class="column6">Bids</th>
+                          <th class="column7">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         {% for i in completed_projects %}
+
+                          <tr>
+                            <td class="column1">{{forloop.counter}}</td>
+                            <td class="column2">{{i.project.project_name}}</td>
+                            <td class="column3">{{i.project.project_details}}</td>
+                            <td class="column4">{{i.project.project_deadline}}</td>
+                            <td class="column5">{{i.project.project_payment}}</td>
+                            <td class="column6"><button class="btn btn-primary viewbids">View Bids</button></td>
+                            <td>
+                            <a href="{% url 'view_completed_project' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="View" class="fa fa-eye"></span></a>
+                            <a href="{% url 'done_project' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="Done" class="fa fa-check-square" ></span></a>
+                            <a href="{% url 'delete_completed_project' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="Delete" class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+
+                    <div id="container">
+                      <div class="pagination" >
+                        <ul class="pagination">                            
+                        {% if completed_projects.has_previous %}
+
+                          <li class="prev"><a href="?page={{ completed_projects.previous_page_number }} {{ query_string }}"> &laquo Previous</a></li>
+                              {% else %}
+                                <li class="disabled"><span>Previous</span></li>
+                         {% endif %}
+                         
+                         {% if completed_projects.number|add:'-4' > 1 %}
+                               <li><a href="?page={{ completed_projects.number|add:'-5' }} {{ query_string }}">&hellip;</a></li>
+                         {% endif %}
+
+                          {% for i in completed_projects.paginator.page_range %}
+                                {% if completed_projects.number == i %}
+                                      <li class="active"><span> {{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% elif i > completed_projects.number|add:'-5' and i < completed_projects.number|add:'5' %}
+
+                                      <li><a href="?page={{ i }} {{ query_string }}">{{ i }}</a></li>
+                                {% endif %}
+
+                           {% endfor %}
+                           
+                           {% if completed_projects.paginator.num_pages > completed_projects.number|add:'4' %}
+                                      <li><a href="?page={{ completed_projects.number|add:'5' }} {{ query_string }}">&hellip;</a></li>
+                           {% endif %}
+
+
+                           {% if completed_projects.has_next %}
+                                  <li class='next'><a href="?page={{ completed_projects.next_page_number }} {{ query_string }}">Next &raquo</a></li>
+                               {% else %}
+                                  <li class="disabled"><span>Next</span></li>
+                           {% endif %}
+                        </ul>
+                      </div>
+                    </div>

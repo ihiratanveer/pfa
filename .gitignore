@@ -1,0 +1,7 @@
+*.pyo
+*.pyc
+# virtualenv
+.venv
+venv/
+ENV/
+.vscode

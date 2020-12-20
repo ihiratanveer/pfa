@@ -1,0 +1,55 @@
+{% include 'base.html' %}
+{% include 'partials/topbar.html' %}
+
+<body>
+        {% include 'partials/employer_navbar.html' %}
+	<div class="wrapper row2">
+        <div id="container">
+          <h3>{{completed_project.project.project_name}}</h3>
+          <section id="intro" class="clear">         
+      <!-- ################################# project details ############################################################### -->
+           
+             
+                    <div class="boxborder">
+                      <div class="leftside">
+                      	<div style="margin-bottom: 10px;" class="projectdetails">
+                        	<div class="inline">
+                          <h4 style="font-weight:bold; padding-top: 20px;">Contract Details:</h4>
+                          <hr style="height:1px;margin-top:0px;padding-top:0px;background-color:#20B2AA;">
+                          <p style="font-weight: bold;">Employer: </p> <p><a href="#">{{completed_project.employer.user.username}}</a></p><br>
+                          <p style="font-weight: bold;">Freelancer: </p> <p><a href="#">{{completed_project.freelancer.user.username}}</a></p><br>
+                          <p style="font-weight: bold;">Completion Date: </p>{{completed_project.project.project_deadline}}<p></p><br>
+                          </div>
+                        </div>
+                        <div class="clear"></div>
+                      
+                    </div>
+                  </div>
+                  
+            
+                    <div class="boxborder">
+                      <div class="rightside">
+                        <div class="projectdetails">
+                          <!-- project details -->
+                          <h4 style="font-weight:bold; padding-top: 20px;">Project Details</h4>
+                          <hr style="height:1px;margin-top:0px;padding-top:0px;background-color:#20B2AA;">
+                          <p style="font-weight: bold;">PKR {{completed_project.project.project_payment}}/-</p>                          
+                          <p>{{completed_project.project.project_details}} </p>
+
+                          <h5 style="font-weight:bold; padding-top: 20px;">Skills Required</h5><hr>
+                          <p class="skillslabel">
+                                  {% for tag in completed_project.project.project_tags_as_list %}
+                                       <span class="label label-default">{{tag}} &nbsp;</span>
+                                  {% endfor %}
+                        </p>
+                          <p>Project ID: {{completed_project.project.id}}</p>
+                        </div> 
+
+                           
+                    </div>
+
+            </section>
+          </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% include 'base.html' %}
+  <head>
+<script type="text/javascript" src="assets/twitterbootstrap/js/bootstrap-tab.js"></script>
+
+  </head>
+<body>
+<div class="wrapper row1">    <!-- #########1111111111####################################################################################### -->
+		{% include 'partials/topbar.html' %}
+
+
+       
+       <div class="tab-content"> <!--2 -->
+          <div id="freelancer_dashboard" class="tab-pane fade in active">
+            <div class="wrapper row1"> <!--4 -->
+				{% include 'partials/employer_navbar.html' %}
+	
+      <!-- #################################   BROWSE PROJECTS  ############################################################### -->
+      <div class="tab-content"><!--5 -->
+          <div id="my_projects" class="tab-pane fade in active">
+
+          <div class="wrapper row2">
+            <div id="container">
+            <h4>Welcome {{data.username}}</h4>
+            <!-- <p>You can easily view the projects categorized into three categories.</p> -->
+
+            <ul class="nav nav-tabs" id="myTab" >
+              <li  id='li_of_posted_tab' class="posted_project_tab active "><a data-toggle="tab" href="#my_bids"> My Projects</a></li>
+              
+              <li class="work_in_progress_tab "> <a data-toggle="tab" href="#work_in_progress"> Work in Progress</a></li>
+              
+              <li class="completed_project_tab"><a data-toggle="tab" href="#completed_projects"> Completed Projects</a></li>
+            </ul>
+
+          <div>
+            {% for x in notifications %}
+              <br>
+              {{x.sender}} {{x.text_preview}} {{x.bid_item.project.project_name}}
+            {% endfor %}
+          </div>

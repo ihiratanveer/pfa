@@ -1,0 +1,68 @@
+{% include 'base.html' %}
+{% include 'partials/topbar.html' %}
+
+<body>
+    {% include 'partials/navbar_freelancer.html' %}
+	<div class="wrapper row2">
+        <div id="container">
+          <h3>{{ongoing_project.project.project_name}}</h3>
+          <section id="intro" class="clear">         
+            <!-- <p>You can easily view the projects categorized into three categories.</p> -->
+      <!-- ################################# project details ############################################################### -->
+           
+             
+                    <div class="boxborder">
+                      <div class="leftside">
+                      	<div style="margin-bottom: 10px;" class="projectdetails">
+                        	<div class="inline">
+                          <h4 style="font-weight:bold; padding-top: 20px;">Contract Details:</h4>
+                          <hr style="height:1px;margin-top:0px;padding-top:0px;background-color:#20B2AA;">
+                          <p style="font-weight: bold;">Employer: </p> <p><a href="#">{{ongoing_project.employer.user.username}}</a></p><br>
+                          <p style="font-weight: bold;">Freelancer: </p> <p><a href="#">{{ongoing_project.freelancer.user.username}}</a></p><br>
+                          <p style="font-weight: bold;">Estimated Days: </p> <p>{{ongoing_project.project.project_deadline}}</p><br>
+                          </div>
+                        </div>
+                        <div class="clear"></div>
+                        <!-- about employer -->
+                        <div class="aboutemployer">
+                          <h4 style="font-weight:bold;">About Employer</h4><hr>
+                          <p><span class="fa fa-map-marker"></span>       Location</p>
+                            <p><span class="fa fa-desktop"></span>   3 Projects Completed</p>
+                              <p><span class="fa fa-user"></span>    Rating (x Reviews)</p>
+                                <p><span class="fa fa-clock-o"></span>    Member since October 25, 2018</p>
+
+                          <h4 style="font-weight:bold; padding-top:10px;">Employer Verification</h4><hr>
+                          <p><span class="fa fa-id-card"></span>       Identity Verified</p>
+                            <p><span class="fa fa-shield"></span>       Payment Method Verified</p>
+                            <p><span class="fa fa-envelope"></span>   Email Verified</p>
+                              <p><span class="fa fa-user"></span>    Profile Completed</p>
+                                <p><span class="fa fa-phone"></span>    Phone Number Verified</p>
+                        </div>
+                    </div>
+                  </div>
+                  
+            
+                    <div class="boxborder">
+                      <div class="rightside">
+                        <div class="projectdetails">
+                          <!-- project details -->
+                          <h4 style="font-weight:bold; padding-top: 20px;">Project Details</h4>
+                          <hr style="height:1px;margin-top:0px;padding-top:0px;background-color:#20B2AA;">
+                          <p style="font-weight: bold;">PKR {{ongoing_project.project.project_payment}}/-</p>                          
+                          <p>{{ongoing_project.project.project_details}} </p>
+
+                          <h5 style="font-weight:bold; padding-top: 20px;">Skills Required</h5><hr>
+                        <p class="skillslabel">
+                                  {% for tag in ongoing_project.project.project_tags_as_list %}
+                                       <span class="label label-default">{{tag}} &nbsp;</span>
+                                  {% endfor %}
+                        </p>
+                          <p>Project ID: {{ongoing_project.project.id}}</p>
+                        </div>                  
+                    </div>
+
+            </section>
+          </div>
+        </div>
+</body>
+{% include 'partials/footer.html' %}

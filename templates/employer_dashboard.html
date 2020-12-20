@@ -1,0 +1,161 @@
+{% include 'base.html' %}
+  <head>
+<script type="text/javascript" src="assets/twitterbootstrap/js/bootstrap-tab.js"></script>
+
+  </head>
+<body>
+<div class="wrapper row1">    <!-- #########1111111111####################################################################################### -->
+		{% include 'partials/topbar.html' %}
+
+
+       
+       <div class="tab-content"> <!--2 -->
+          <div id="freelancer_dashboard" class="tab-pane fade in active">
+            <div class="wrapper row1"> <!--4 -->
+				{% include 'partials/employer_navbar.html' %}
+	
+      <!-- #################################   BROWSE PROJECTS  ############################################################### -->
+      <div class="tab-content"><!--5 -->
+          <div id="my_projects" class="tab-pane fade in active">
+
+          <div class="wrapper row2">
+            <div id="container">
+            <h4>Welcome {{data.username}}</h4>
+            <!-- <p>You can easily view the projects categorized into three categories.</p> -->
+
+            <ul class="nav nav-tabs" id="myTab" >
+              <li  id='li_of_posted_tab' class="posted_project_tab active "><a data-toggle="tab" href="#my_bids"> My Projects</a></li>
+              
+              <li class="work_in_progress_tab "> <a data-toggle="tab" href="#work_in_progress"> Work in Progress</a></li>
+              
+              <li class="completed_project_tab"><a data-toggle="tab" href="#completed_projects"> Completed Projects</a></li>
+            </ul>
+
+            <div class="tab-content">
+              
+
+
+              <div  class=" tab-pane fade in  active" id="my_bids">
+              <!-- onclick="window.location.href='{% url 'employer_dashboard' %}'" -->
+            
+            <div class="wrappersearchicon" >
+              <form  action="{% url 'employer_search_posted_project' %}" method="GET">
+              <input type="text" id="projsearch_mb" name="projsearch_mb" placeholder="Search Project by Name... " method='GET'>
+             </form>
+            </div>
+
+
+            <div class="limiter">
+              <div class="container-table100">
+                <div class="wrap-table100">
+                  <div class="table100" id="posted_project_data">
+                      {% include 'search/employer_search/posted_project_search_ajax.html' %}
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+
+
+              <div id="work_in_progress" class="tab-pane fade in" id="work_in_progress">
+               
+               <div class="wrappersearchicon">
+                  <form  action="{% url 'employer_search_ongoing_project' %}" method="GET">
+                        <input type="text" id="projsearch_wip" name='projsearch_wip' placeholder="Search Project by Name... ">
+                  </form>
+              </div>
+
+                <div class="limiter">
+              <div class="container-table100">
+                <div class="wrap-table100">
+                  <div class="table100 " id="ongoing_project_data">
+                      {% include 'search/employer_search/ongoing_project_search_ajax.html' %}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+
+
+
+              <div id="completed_projects" class="tab-pane fade in"  id="completed_projects">
+                <div class="wrappersearchicon">
+                            <form  action="{% url 'employer_search_completed_project' %}" method="GET">
+
+              <input type="text" id="projsearch_cp" name='projsearch_cp' placeholder="Search Project by Name... ">
+            </form>
+            </div>
+
+
+                <div class="limiter">
+              <div class="container-table100">
+                <div class="wrap-table100">
+                  <div class="table100" id="completed_project_data">
+                          {% include 'search/employer_search/completed_project_search_ajax.html' %}
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+         
+            
+
+          </div>
+          </div>
+
+          </div><!--6 -->
+          </div><!--5 -->
+
+    </div><!--4 -->
+
+    </div>
+
+
+
+    <div id="user_profile" class="tab-pane fade"><!--3 -->
+
+      
+
+
+
+    </div><!--3 -->
+
+    </div><!--2 -->
+
+
+</div> <!--1-->
+</body>
+{% include 'partials/footer.html' %}
+
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+   $('[data-toggle="actionicontooltip"]').tooltip();
+});
+</script>
+
+
+
+
+<script>
+ $(document).ready(function(){
+jQuery.noConflict();     
+  var activeTab = window.location.hash;
+  $('a[data-toggle="tab"]').on('click', function (e) {
+          localStorage.setItem('lastTab', $(this).attr('href'));
+    });
+    // go to the latest tab, if it exists:
+    var lastTab = localStorage.getItem('lastTab');
+        if (lastTab) {
+              $('#myTab a[href="' + lastTab + '"]').tab('show');
+
+        }
+
+});
+</script>
