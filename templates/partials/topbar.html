@@ -1,0 +1,17 @@
+<header id="header">
+    <div id="hgroup">
+      <h1><a href="">Freelancer.pk</a></h1>
+      <h2>Hire freelancers from all over Pakistan!</h2>
+    </div>
+    <!-- ################################################################################################ -->
+    <nav id="topnav">
+      <ul class="topnav clear nav nav-tabs">
+        <li class="active"><a href="{% url 'freelancer_dashboard' %}"><span class="fa fa-home"></span> Dashboard</a></li>
+        <li><a href="{% url 'show_profile' %}"><span class="fa fa-user"></span> {{data.username}}</a></li>
+        <li><a href="{% url 'logout' %}"><span class="fa fa-key"></span> Logout</a></li>
+
+      </ul>
+    </nav>
+    <div class="clear"></div>
+  </header>
+

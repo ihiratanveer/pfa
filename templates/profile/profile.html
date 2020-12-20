@@ -1,0 +1,136 @@
+{% include 'base.html' %}
+
+
+<body>
+{% include 'partials/simple_navbar.html' %}
+
+<div class="wrapper row2">
+  <div id="container"> 
+    <!-- ################################################################################################ -->
+    <div id="content"> 
+      <!-- ########################################################################################## -->
+      <section>
+        <figure class="imgl"><img src="images/demo/250x250-placeholder.png" alt="" width=250 height="250"></figure> 
+        <!-- Check the link to see how to render a thumbnail from a picture stored in db: https://stackoverflow.com/questions/5820377/how-to-create-thumbnails-within-postgresql -->
+        <div class="profile-font">
+        <p style="font-size:18px; display: inline-block; font-weight: bold;">{{user.username}}</p> 
+        <p style="font-size:18px; display: inline-block;"><a href="#">@{{first_email}}</a></p>
+        <p style=" font-size:18px; font-weight: bold;"> {{intro.user_title}} </p>
+        <div style="display: inline-block;" class="starrating">
+          <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+          <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+          <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+          <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+          <span class="float-right"><i class="text-warning fa fa-star-o"></i></span>
+        </div>
+        <p style="display: inline-block;"> ( 20 Reviews) </p>
+        <br>
+        <div style="display: inline-block;" id="jobs_completed"> 
+            <p style="display: inline-block;font-weight: bold; font-size: 22px; color: #20B2AA">67%</p> &nbsp; <p style="display: inline-block;">Jobs Completed</p> &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div style="display: inline-block;" id="on_time">
+            <p style="display: inline-block;font-weight: bold; font-size: 22px; color: #20B2AA">81%</p> &nbsp; <p style="display: inline-block;">Jobs Completed</p>
+          </div>
+          <br>
+          <div style="display: inline-block;" id="on_budget">
+            <p style="display: inline-block;font-weight: bold; font-size: 22px; color: #20B2AA">62%</p> &nbsp; <p style="display: inline-block;">Jobs Completed</p> &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          <div style="display: inline-block;" id="recommended">
+            <p style="display: inline-block;font-weight: bold; font-size: 22px; color: #20B2AA">72%</p> &nbsp; <p style="display: inline-block;">Jobs Completed</p>
+          </div>
+          <br>
+        <p style="display: inline-block;">{{intro.user_intro}}</p>
+      </div>
+<!--       <a href="#"><i class="fa fa-cog"></i></a> -->
+      <button style="float:right;" class="btn btn-primary"> <a href="{% url 'save_info' %}" style="text-decoration: none; background-color:#20B2AA;color:white;">Edit Your Profile </a></button>
+      </section>
+      <br>
+
+      <aside id="left_column"> 
+      <section>
+        <h2 style="font-weight:bold;">Portfolio</h2>
+        {% for p_item in port %}
+           {{ p_item.portfolio_file }}
+        {% endfor %}
+      </section>
+      <br>
+
+      <section>
+        <h2 style="font-weight:bold;">Experience</h2>
+        {% for i in exp%}
+        <p style="font-weight:bold;">{{i.company_name}}</p>
+        <p>{{i.company_designation}}</p>
+        <p>{{i.company_start_date}} - {{i.company_end_date}}</p>
+        <hr>
+        {% endfor %}
+      </section>
+      <br>
+
+      <section>
+        
+        <h2 style="font-weight:bold;">Education</h2>
+         {% for i in edu%}
+
+        <p style="font-weight:bold;">{{i.institute_name}}</p>
+        <p>{{i.degree_name}}</p>
+        <p>{{i.degree_start_date}} - {{i.degree_end_date}}</p>
+        <hr>
+        {% endfor %}
+
+      </section>
+      <br>
+    </aside>
+
+      
+      <!-- ########################################################################################## --> 
+    </div>
+    <!-- right column -->
+    <aside id="right_column"> 
+      <!-- ########################################################################################## -->
+      <section>
+        <h2 style="font-weight:bold;">About</h2>
+        <p><span class="fa fa-map-marker"></span>       Location</p>
+        <p><span class="fa fa-desktop"></span>   3 Projects Completed</p>
+        <p><span class="fa fa-user"></span>    Rating (x Reviews)</p>
+        <p><span class="fa fa-clock-o"></span>    Member since October 25, 2018</p>
+      </section>
+      <section>
+        <h2 style="font-weight:bold; padding-top:10px;">User Verification</h2>
+        <p><span class="fa fa-id-card"></span>       Identity Verified</p>
+        <p><span class="fa fa-shield"></span>       Payment Method Verified</p>
+        <p><span class="fa fa-envelope"></span>   Email Verified</p>
+        <p><span class="fa fa-user"></span>    Profile Completed</p>
+        <p><span class="fa fa-phone"></span>    Phone Number Verified</p>
+      </section>
+      <!-- /section -->
+      <section>
+        <article>
+          <h2>Lorem ipsum dolor</h2>
+          <p>Nuncsed sed conseque a at quismodo tris mauristibus sed habiturpiscinia sed.</p>
+          <ul>
+            <li><a href="#">Lorem ipsum dolor sit</a></li>
+            <li>Etiam vel sapien et</li>
+            <li><a href="#">Etiam vel sapien et</a></li>
+          </ul>
+          <p>Nuncsed sed conseque a at quismodo tris mauristibus sed habiturpiscinia sed. Condimentumsantincidunt dui mattis magna intesque purus orci augue lor nibh.</p>
+          <p class="more"><a href="#">Continue Reading &raquo;</a></p>
+        </article>
+      </section>
+      <!-- /section --> 
+      <!-- ########################################################################################## --> 
+    </aside>
+    <!-- ################################################################################################ -->
+    <div class="clear"></div>
+  </div>
+</div>
+
+
+
+<!-- IMAGE CROPPING -->
+<script type="text/javascript">
+
+</script>
+
+
+</body>
+{% include 'partials/footer.html' %}

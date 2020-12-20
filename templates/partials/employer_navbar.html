@@ -1,0 +1,44 @@
+{% load static %}
+
+<form action="{% url 'switch_dashboard' %}" method="POST">
+				{% csrf_token %}
+
+				<header id="header">
+                <div class="leftnav2">
+                <nav id="topnav2">
+                  <ul class="topnav2 clear nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#my_projects"><span class="fa fa-tasks"></span> My Projects</a></li>
+                    <li><a data-toggle="tab" href="#inbox"><span class="fa fa-envelope"></span> Inbox</a></li>
+                    <li><a data-toggle="tab" href="#updates"><span class="fa">&#xf0f3;</span> Updates <span style="background-color:red;"class="badge">5</span></a></li>
+                  </ul>
+                </nav>
+              </div>
+
+
+
+                  <div class="rightnav11emp" id="as_freelancer"  name="as_freelancer">
+                      <button id="as_freelancer"  name="as_freelancer" onclick="enablebuttonfreelancer()">Freelancer</button>
+                  </div>
+                  <div class="rightnav1emp" id="as_employer" name="as_employer">
+                      <button id="as_employer" name="as_employer" />Employer</button>
+                  </div>
+
+              <div class="rightnav2">
+                  <button class="btn btn-primary" name="post_project" id="post_project">Post a Project</button>
+          </div>
+        <div class="clear"></div>
+      </header>
+</form>
+
+
+<script type="text/javascript">
+
+ 
+  function enablebuttonfreelancer() {
+            document.getElementById("as_freelancer").disabled = false;
+            document.getElementById("as_freelancer").style.color = "#20B2AA";
+            document.getElementById("as_freelancer").enabled = true;
+            // add function here
+            
+        }
+</script>

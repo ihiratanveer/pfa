@@ -1,0 +1,80 @@
+{% include 'base.html' %}
+
+<body>
+      {% include 'partials/simple_navbar.html' %}
+
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" style="padding-top: 0"> 
+    <!-- ################################################################################################ --> 
+    <!-- main content -->
+    <div id="homepage">
+      <section id="intro" class="clear">
+
+
+    <div class="signin-form">
+    <div class="card-body">
+
+    <form id="sign_up_form" action="{% url 'register' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <h2>Welcome to Freelancer.pk!</h2>
+            <p class="hint-text"> Sign-up and Get Started!</p>
+
+            <div class="form-group">
+            <div class="row">
+            <div><input type="text" class="form-control" name="fname" placeholder="First Name" required></div>
+            <div><input type="text" class="form-control" name="lname" placeholder="Last Name" required></div>
+            </div> 
+            </div>
+
+            <div class="form-group">
+            <input type="email" class="form-control" name="email" placeholder="Email Address" required>
+            </div> 
+
+            <div class="form-group">
+            <input type="password" class="form-control" name="pass" placeholder="Enter Password" required>
+            </div> 
+
+            <div class="form-group">
+            <input type="password" class="form-control" name="confirmpass" placeholder="Confirm Password" required>
+            </div> 
+
+            <div class="form-group" style="font-size: 12px;">
+                <input type="checkbox" name="agree" value="" required>   <label>I agree to the Freelancer.pk <a href="#">User Agreement</a> and <a href="#">Policy</a></label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="sign_up_button" class="btn btn-success btn-lg btn-block signup-btn" style="background-color:black;">Register Now!</button>
+            </div>
+            <div class="text-center small">Already have an account? <a href="{% url 'login' %}">Sign In</a></div>
+
+    </form>
+    </div>
+</div>
+                     {% include 'partials/alert.html' %}
+
+      </section>
+      <!-- / Intro --> 
+    </div>
+    <!-- ########################################################################################## --> 
+    <!-- ################################################################################################ -->
+    <div class="clear"></div>
+  </div>
+
+</div>
+
+
+<script>
+$(document).ready(function(){
+    $("#sign_up_button").click(function(){        
+        $("#sign_up_form").submit(); // Submit the form
+    });
+});
+
+
+</script>
+
+</body>
+
+{% include 'partials/footer.html' %}

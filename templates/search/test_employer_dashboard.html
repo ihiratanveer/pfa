@@ -1,0 +1,429 @@
+{% include 'base.html' %}
+
+<body>
+<div class="wrapper row1">    <!-- #########1111111111####################################################################################### -->
+		{% include 'partials/topbar.html' %}
+
+
+       
+       <div class="tab-content"> <!--2 -->
+          <div id="freelancer_dashboard" class="tab-pane fade in active">
+            <div class="wrapper row1"> <!--4 -->
+				{% include 'partials/employer_navbar.html' %}
+	
+      <!-- #################################   BROWSE PROJECTS  ############################################################### -->
+      <div class="tab-content"><!--5 -->
+          <div id="my_projects" class="tab-pane fade in active">
+
+          <div class="wrapper row2">
+            <div id="container">
+            <h4>Welcome {{data.username}}</h4>
+            <!-- <p>You can easily view the projects categorized into three categories.</p> -->
+
+            <ul class="nav nav-tabs" >
+              <li class="active"><a data-toggle="tab" href="#my_bids">My Projects</a></li>
+              <li><a data-toggle="tab" href="#work_in_progress">Work in Progress</a></li>
+              <li><a data-toggle="tab" href="#completed_projects">Completed Projects</a></li>
+            </ul>
+
+            <div class="tab-content">
+              <div id="my_bids" class="tab-pane fade in active">
+              <!-- onclick="window.location.href='{% url 'employer_dashboard' %}'" -->
+            <div class="wrappersearchicon">
+              {% csrf_token %}
+              <input type="text" id="projsearch_mb" name="projsearch_mb" placeholder="Search Project by Name... ">
+            </div>
+
+
+
+            <div class="limiter">
+              <div class="container-table100">
+                <div class="wrap-table100">
+                  <div class="table100">
+                    <table>
+                      <thead>
+                        <tr class="table100-head">
+                          <th class="column1">Sr. No.</th>
+                          <th class="column2">Project Name</th>
+                          <th class="column3">Project Details</th>
+                          <th class="column4">Deadline</th>
+                          <th class="column5">Payment</th>
+                          <th class="column6">Bids</th>
+                          <th class="column7">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          {% for i in posted_project %}
+
+                          <tr>
+                            <td class="column1">{{forloop.counter}}</td>
+                            <td class="column2">{{i.project.project_name}}</td>
+                            <td class="column3">{{i.project.project_details}}</td>
+                            <td class="column4">{{i.project.project_deadline}}</td>
+                            <td class="column5">{{i.project.project_payment}}</td>
+                            <td class="column6"><button class="btn btn-primary viewbids"> <a style="text-decoration: none; background-color:#20B2AA;color:white;" href= "{% url 'view_project_employer'  i.project.id %}">View Bids </a> </button></td>
+                            <td>
+                            <a href="{% url 'view_project_employer'  i.project.id %}" >
+                                <span id="actionicons" data-toggle="actionicontooltip" title="View" class="fa fa-eye"></span>
+                            </a>
+                            <a href="#"><span id="actionicons" data-toggle="actionicontooltip" title="Done" class="fa fa-check-square" ></span></a>
+                            <a href="{% url 'delete_project' i.id %}">
+                              <span id="actionicons" data-toggle="actionicontooltip" title="Delete" class="fa fa-trash"></span></a>
+                            </td>
+                          </tr> 
+                          {% endfor %}
+                      </tbody>
+                    </table>
+                    
+                    <div id="container">
+                      <div class="pagination" >
+                        <ul class="pagination">                            
+                        {% if posted_project.has_previous %}
+
+                          <li class="prev"><a href="?page={{ posted_project.previous_page_number }}"> &laquo Previous</a></li>
+                              {% else %}
+                                <li class="disabled"><span>Previous</span></li>
+                         {% endif %}
+                         
+                         {% if posted_project.number|add:'-4' > 1 %}
+                               <li><a href="?page={{ posted_project.number|add:'-5' }}">&hellip;</a></li>
+                         {% endif %}
+
+                          {% for i in posted_project.paginator.page_range %}
+                                {% if posted_project.number == i %}
+                                      <li class="active"><span> {{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% elif i > posted_project.number|add:'-5' and i < posted_project.number|add:'5' %}
+
+                                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+
+                           {% endfor %}
+                           
+                           {% if posted_project.paginator.num_pages > posted_project.number|add:'4' %}
+                                      <li><a href="?page={{ posted_project.number|add:'5' }}">&hellip;</a></li>
+                           {% endif %}
+
+
+                           {% if posted_project.has_next %}
+                                  <li class='next'><a href="?page={{ posted_project.next_page_number }}">Next &raquo</a></li>
+                               {% else %}
+                                  <li class="disabled"><span>Next</span></li>
+                           {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+              <div id="work_in_progress" class="tab-pane fade">
+               <div class="wrappersearchicon">
+              <input type="text" id="projsearch_wip" placeholder="Search Project by Name... ">
+            </div>
+
+
+                <div class="limiter">
+              <div class="container-table100">
+                <div class="wrap-table100">
+                  <div class="table100">
+                    <table>
+                      <thead>
+                        <tr class="table100-head">
+                          <th class="column1">Sr. No.</th>
+                          <th class="column2">Project Name</th>
+                          <th class="column3">Project Details</th>
+                          <th class="column4">Deadline</th>
+                          <th class="column5">Payment</th>
+                          <th class="column6">Bids</th>
+                          <th class="column7">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         {% for i in ongoing_projects %}
+
+                          <tr>
+                            <td class="column1">{{forloop.counter}}</td>
+                            <td class="column2">{{i.project.project_name}}</td>
+                            <td class="column3">{{i.project.project_details}}</td>
+                            <td class="column4">{{i.project.project_deadline}}</td>
+                            <td class="column5">{{i.project.project_payment}}</td>
+                            <td class="column6"><button class="btn btn-primary viewbids">View Bids</button></td>
+                            <td>
+                            <a href="{% url 'view_wip_project_employer' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="View" class="fa fa-eye"></span></a>
+                            <a href="{% url 'done_project' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="Done" class="fa fa-check-square" ></span></a>
+                            <a href="{% url 'delete_ongoing_project' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="Delete" class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+
+                    <div id="container">
+                      <div>
+                        <ul class="pagination">                            
+                        {% if ongoing_projects.has_previous %}
+
+                          <li class="prev"><a href="?page={{ ongoing_projects.previous_page_number }}"> &laquo Previous</a></li>
+                              {% else %}
+                                <li class="disabled"><span>Previous</span></li>
+                         {% endif %}
+                         
+                         {% if ongoing_projects.number|add:'-4' > 1 %}
+                               <li><a href="?page={{ ongoing_projects.number|add:'-5' }}">&hellip;</a></li>
+                         {% endif %}
+
+                          {% for i in ongoing_projects.paginator.page_range %}
+                                {% if ongoing_projects.number == i %}
+                                      <li class="active"><span> {{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% elif i > ongoing_projects.number|add:'-5' and i < ongoing_projects.number|add:'5' %}
+
+                                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+
+                           {% endfor %}
+                           
+                           {% if ongoing_projects.paginator.num_pages > ongoing_projects.number|add:'4' %}
+                                      <li><a href="?page={{ ongoing_projects.number|add:'5' }}">&hellip;</a></li>
+                           {% endif %}
+
+
+                           {% if ongoing_projects.has_next %}
+                                  <li class='next'><a href="?page={{ ongoing_projects.next_page_number }}">Next &raquo</a></li>
+                               {% else %}
+                                  <li class="disabled"><span>Next</span></li>
+                           {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+              </div>
+              <div id="completed_projects" class="tab-pane fade">
+                <div class="wrappersearchicon">
+              <input type="text" id="projsearch_cp" placeholder="Search Project by Name... ">
+            </div>
+
+
+                <div class="limiter">
+              <div class="container-table100">
+                <div class="wrap-table100">
+                  <div class="table100">
+                    <table>
+                      <thead>
+                        <tr class="table100-head">
+                          <th class="column1">Sr. No.</th>
+                          <th class="column2">Project Name</th>
+                          <th class="column3">Project Details</th>
+                          <th class="column4">Deadline</th>
+                          <th class="column5">Payment</th>
+                          <th class="column6">Bids</th>
+                          <th class="column7">Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                         {% for i in completed_projects %}
+
+                          <tr>
+                            <td class="column1">{{forloop.counter}}</td>
+                            <td class="column2">{{i.project.project_name}}</td>
+                            <td class="column3">{{i.project.project_details}}</td>
+                            <td class="column4">{{i.project.project_deadline}}</td>
+                            <td class="column5">{{i.project.project_payment}}</td>
+                            <td class="column6"><button class="btn btn-primary viewbids">View Bids</button></td>
+                            <td>
+                            <a href="{% url 'view_completed_project' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="View" class="fa fa-eye"></span></a>
+                            <a href="{% url 'done_project' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="Done" class="fa fa-check-square" ></span></a>
+                            <a href="{% url 'delete_completed_project' i.project.id %}"><span id="actionicons" data-toggle="actionicontooltip" title="Delete" class="fa fa-trash"></span></a>
+                            </td>
+                          </tr>
+                        {% endfor %}
+
+                      </tbody>
+                    </table>
+
+                    <div id="container">
+                      <div class="pagination" >
+                        <ul class="pagination">                            
+                        {% if completed_projects.has_previous %}
+
+                          <li class="prev"><a href="?page={{ completed_projects.previous_page_number }}"> &laquo Previous</a></li>
+                              {% else %}
+                                <li class="disabled"><span>Previous</span></li>
+                         {% endif %}
+                         
+                         {% if completed_projects.number|add:'-4' > 1 %}
+                               <li><a href="?page={{ completed_projects.number|add:'-5' }}">&hellip;</a></li>
+                         {% endif %}
+
+                          {% for i in completed_projects.paginator.page_range %}
+                                {% if completed_projects.number == i %}
+                                      <li class="active"><span> {{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% elif i > completed_projects.number|add:'-5' and i < completed_projects.number|add:'5' %}
+
+                                      <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+
+                           {% endfor %}
+                           
+                           {% if completed_projects.paginator.num_pages > completed_projects.number|add:'4' %}
+                                      <li><a href="?page={{ completed_projects.number|add:'5' }}">&hellip;</a></li>
+                           {% endif %}
+
+
+                           {% if completed_projects.has_next %}
+                                  <li class='next'><a href="?page={{ completed_projects.next_page_number }}">Next &raquo</a></li>
+                               {% else %}
+                                  <li class="disabled"><span>Next</span></li>
+                           {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+
+         
+            
+
+          </div>
+          </div>
+
+          </div><!--6 -->
+          </div><!--5 -->
+
+    </div><!--4 -->
+
+    </div>
+
+
+
+    <div id="user_profile" class="tab-pane fade"><!--3 -->
+
+      
+
+
+
+    </div><!--3 -->
+
+    </div><!--2 -->
+
+
+</div> <!--1-->
+
+<!--SEARCHHH DYNAMICALLLLLLLLLLYY-------------------------------------------------------------->
+
+
+<!---------------------------SEARCHHH DYNAMICALLLLLLLLLLYY--------------------------------------------------------------
+def project_search_freelancer(request,project_id):
+  freelancer_id=employer.objects.get(user_id=request.user.id).id
+
+  bid = bids.objects.filter(freelancer_id=freelancer_id)
+  title_contains_query = request.GET.get('projsearch_mb')
+  if is_valid_queryparam(title_contains_query):
+    bid = bid.filter(project__project_name__icontains=title_contains_query)    
+
+  paginator = Paginator(bid, 5)
+  page = request.GET.get('page')
+  bid = paginator.get_page(page)
+  data={"bids":bid}
+  return render(request,"freelancer_dashboard.html",data)
+
+<script>
+$(document).ready(function(e) {   
+  $(function(){
+    var $input = $('#projsearch_mb');
+    var input = $(this).val();
+    $input.on('input', function() {
+      var $data=$(this).val();
+      //alert($data);
+    $.ajax({
+        url: "{% url 'employer_search_posted_project' %}",
+        type: 'POST',
+        dataType: "text",
+        data: {'data':$data}, 
+        success: function(data) {
+        $('#posted_project_data').html(data);
+
+        } 
+      })   
+    });
+  })();
+});
+</script>
+
+<script>
+$(document).ready(function(e) {   
+  $(function(){
+    var $input = $('#projsearch_wip');
+    var input = $(this).val();
+    $input.on('input', function() {
+      var $data=$(this).val();
+      //alert($data);
+      console.log($data);
+    $.ajax({
+        url: "{% url 'employer_search_ongoing_project' %}",
+        type: 'POST',
+        dataType: "text",
+        data: {'data':$data}, 
+        success: function(response) {
+          $('#ongoing_project_data').html(data);
+        } 
+      })   
+    });
+  })();
+});
+</script>
+
+
+<script>
+$(document).ready(function(e) {   
+  $(function(){
+    var $input = $('#projsearch_cp');
+    var input = $(this).val();
+    $input.on('input', function() {
+      var $data=$(this).val();
+      //alert($data);
+      console.log($data);
+    $.ajax({
+        url: "{% url 'employer_search_completed_project' %}",
+        type: 'POST',
+        dataType: "text",
+        data: {'data':$data}, 
+        success: function(response) {
+          $('#completed_project_data').html(data);
+        } 
+      })   
+    });
+  })();
+});
+</script>
+
+-------------------------SEARCHHH DYNAMICALLLLLLLLLLYY-------------------------------------------------------------->
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="actionicontooltip"]').tooltip();
+});
+</script>
+
+
+{% include 'partials/footer.html' %}
+
+
+
+</body>
+
+</html>

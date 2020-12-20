@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+#container #homepage{display:block; width:100%; line-height:1.6em;}
+
+#container #homepage #shout{display:block; width:100%; margin-bottom:5px; text-align:center;}
+#container #homepage #shout h1{font-size:5em; line-height:normal;}
+#container #homepage #shout p{margin:0; padding:0; font-size:1.6em;}
+
+#container #homepage #featured_slide{display:block; width:100%;}
+#container #homepage #featured_slide figure{}
+#container #homepage #featured_slide figure header{display:none;}
+#container #homepage #featured_slide figure ul{margin:0; padding:0; list-style:none;}
+#container #homepage #featured_slide figure ul li{display:block; float:left; width:23.4375%; height:auto; margin:0 2.08333% 0 0; padding:0;}
+#container #homepage #featured_slide figure ul li.last{margin-right:0; padding:0;}
+#container #homepage #featured_slide figure ul li img{}
+#container #homepage #featured_slide figure figcaption{display:block; visibility:hidden; clear:both;}
+
+#container #homepage #services{margin-bottom:30px; padding-bottom:30px; border-bottom:1px solid #D6D6D6;}
+#container #homepage #services article{}
+#container #homepage #services article h2{}
+#container #homepage #services article p{margin:10px 0; padding:0;}
+#container #homepage #services article footer{}
+
+#container #homepage #intro{margin-bottom:0;}
+#container #homepage #intro article{}
+#container #homepage #intro article h2{}
+#container #homepage #intro article p{}
+#container #homepage #intro article footer{}
+
+#container ul{
+    border-bottom: 1px solid #ddd;
+    border-width: 0 1px 1px; /* Removes the top border */
+    padding: 1px;
+}
+
+#container li a{font-size:14px; color:black;}
+/*#container .nav .nav-tabs .active li a{font-size:14px; color:#20B2AA;}*/
+#container .active a{font-weight: bold; font-size:14px; color:#20B2AA;}
+#container li a:hover{font-weight: bold;font-size:14px; color:#20B2AA;}
+
+
+.wrappersearchicon{
+	font-size: 14px;
+	text-align:right;
+	padding-top:20px;
+}
+
+
+.wrappersearchicon input[type="text"] {
+  position: relative; 
+  float: right;
+  border-radius: 25px;
+  border: 2px solid #20B2AA;
+  padding: 15px;
+  width: 300px;
+  height: 12px;
+  outline:none;
+}
+
+.wrappersearchicon input { font-family: 'FontAwesome', Arial; } /* This is for the placeholder */
+
+.wrappersearchicon:before {
+    font-family: 'FontAwesome', Arial;
+    color:#20B2AA;
+    position: relative;
+    padding: 5px;
+    margin:1px black;
+    font-size: 14px;
+    content: "\f002";
+}
+
+.label-default{
+  background: gray !important;
+  color:white !important;
+  font-weight: normal !important;
+}
+
+
+.skillslabel{
+  font-size:18px;
+}

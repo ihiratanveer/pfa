@@ -1,0 +1,42 @@
+{% load static %}
+<form action="{% url 'switch_dashboard' %}" method="POST">
+        {% csrf_token %}
+        <header id="header">
+        <div class="leftnav2">
+        <nav id="topnav2">
+          <ul class="topnav2 clear nav nav-tabs">
+            <li ><a  class="button" id="project_browse"data-toggle="tab" href="#browse_projects"><span class="fa fa-search"></span> Browse Projects</a></li>
+            <li><a data-toggle="tab" href="#my_projects"><span class="fa fa-tasks"></span> My Projects</a></li>
+            <li><a data-toggle="tab" href="#inbox"><span class="fa fa-envelope"></span> Inbox</a></li>
+            <li><a data-toggle="tab" href="#updates"><span class="fa">&#xf0f3;</span> Updates <span style="background-color:red;"class="badge">5</span></a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="rightnav11free">
+          <button id="as_freelancer" name="as_freelancer"/>Freelancer</button>
+      </div>
+      <div class="rightnav1free">
+          <button id="as_employer" onclick="enablebuttonemployer()" name="as_employer">Employer</button>
+      </div>
+        <div class="clear"></div>
+      </header>
+</form>
+
+<script type="text/javascript">
+   function enablebuttonemployer() {
+      document.getElementById("as_employer").disabled = false;
+      document.getElementById("as_employer").style.color = "#20B2AA";
+      document.getElementById("as_employer").enabled = true;
+
+  }
+// Requires jQuery
+
+$(document).ready(function() {
+  $('#project_browse').on('click', function() {
+    $(this).addClass('active');
+    $(this)..disabled = false;
+     $(this)..style.color = "#20B2AA";
+     $(this)..enabled = true;
+
+  });
+</script>

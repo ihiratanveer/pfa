@@ -1,0 +1,187 @@
+{% include 'base.html' %}
+
+
+<body>
+      {% include 'partials/simple_navbar.html' %}
+
+<div class="wrapper row2">
+        <div id="container">
+          <h3 style="font-weight: bold; color:#20B2AA;">SET UP YOUR PROFILE</h3>
+          <section>
+
+          <form class="postinfoform" style="padding:20px;"  method="POST" name="personal_information" action="{% url 'save_info' %}" >
+            {% csrf_token %}
+            <h3 style="font-weight: bold;">Personal Information</h3>
+            <p style="font-weight:bold;">Title<span class="required">*</span></p>
+              <div class="item">                    
+                <input type="text" id="title" name="title" placeholder="Content Writer, Web Developer, etc." required/>
+              </div>
+
+            <p style="font-weight:bold;">Your Introduction<span class="required">*</span></p>
+              <div class="item">                      
+                <textarea name="introduction" id="introduction" rows="6" cols="65">Please enter specific details about your project. (100 words minimum)</textarea>
+              </div>
+
+            <div style="margin-top:20px;" class="rightnav2">
+              <button type="submit" id="upload_personal_info"  formmethod="post"  class="btn btn-primary" href="/">Upload Personal Information</button>
+            </div>
+            <div class="clear"></div>
+          </form>
+          <hr><br>
+
+           <form class="postprojform" style="padding:20px;" name="user_portfolio" action="/">
+            <h3 style="font-weight: bold;">Portfolio</h3>      
+              <p style="font-weight:bold;">Attach your portfolio items here:</p>
+              <div class="item">                    
+                <input type="file" name="proj_portfolio_item" accept="file/*">
+              </div>
+
+              <div style="margin-top:20px;" class="rightnav2">
+              <button type="submit" onclick='submitPortfolioForm()' id="upload_portfolio" class="btn btn-primary" href="/">Upload Portfolio</button>
+            </div>
+
+            <div style="margin-top:20px;" class="rightnav2">
+              <button type="submit" onclick='addAnotherPortfolioForm()'id="add_portfolio" class="btn btn-primary" href="/">Add Another Portfolio Item</button>
+            </div>           
+            <div class="clear"></div>
+            </form>
+          <hr><br>
+
+          <form class="postprojform" style="padding:20px;" name="user_experience" action="/">
+            <h3 style="font-weight: bold;">Experience</h3>
+            <p style="font-weight:bold;">Company Name<span class="required">*</span></p>
+              <div class="item">                    
+                <input type="text" id="company_name" name="company_name" placeholder="Company Name" required/>
+              </div>
+
+            <p style="font-weight:bold;">Designation<span class="required">*</span></p>
+              <div class="item">                    
+                <input type="text" id="designation" name="designation" placeholder="Content Writer, Web Developer, etc." required/>
+              </div>
+
+            <p style="font-weight:bold;">From<span class="required">*</span></p>
+              <div class="item">                      
+                <input type="date" id="from_date" name="from_date" value="2020-07-22" required/>
+              </div>
+
+            <p style="font-weight:bold;">To<span class="required">*</span></p>
+              <div class="item">                    
+                <input type="date" id="to_date" name="to_date" value="2020-07-22" required/>
+              </div>
+
+            <div style="margin-top:20px;" class="rightnav2">
+              <button type="submit" onclick='submitExperienceForm()' id="upload_experience" class="btn btn-primary" href="/">Upload Experience</button>
+            </div>
+
+            <div style="margin-top:20px;" class="rightnav2">
+              <button type="submit" onclick='addAnotherExperienceForm()' id="add_experience" class="btn btn-primary" href="/">Add Another Experience</button>
+            </div>           
+            <div class="clear"></div>
+          </form>
+          <hr><br>
+
+
+          <form class="postprojform" style="padding:20px;" name="user_education">
+            <h3 style="font-weight: bold;">Education</h3>
+            <div class="education_wrap">
+            <p style="font-weight:bold;">Institute Name<span class="required">*</span></p>
+              <div class="item">                    
+                <input type="text" id="institute" name="institute" placeholder="Institute Name" required/>
+              </div>
+
+            <p style="font-weight:bold;">Degree Name<span class="required">*</span></p>
+              <div class="item">                    
+                <input type="text" id="degree" name="degreen" placeholder="Bachelor of Engineering in Software Engineering, etc." required/>
+              </div>
+
+            <p style="font-weight:bold;">From<span class="required">*</span></p>
+              <div class="item">                      
+                <input type="date" id="from_date" name="from_date" value="2020-07-22" required/>
+              </div>
+
+            <p style="font-weight:bold;">To<span class="required">*</span></p>
+              <div class="item">                    
+                <input type="date" id="to_date" name="to_date" value="2020-07-22" required/>
+              </div>
+            </div>
+
+            <div style="margin-top:20px;" class="rightnav2">
+              <button type="submit" onclick='submitEducationForm()' id="upload_education" class="btn btn-primary">Upload Education</button>
+            </div>
+
+            <div style="margin-top:20px;" class="rightnav2">
+              <button type="submit" onclick='addAnotherEducationForm()' id="add_education" class="btn btn-primary">Add Another Education</button>
+            </div>
+            <div class="clear"></div>
+          </form>
+          <hr><br>    
+          {% include 'partials/alert.html' %}
+
+              </section>
+              </div>
+            </div>
+          </div>
+
+</body>
+{% include 'partials/footer.html' %}
+
+
+
+<script type="text/javascript">
+function addAnotherEducationForm() {
+   // Get the first form with the name
+   // Usually the form name is not repeated
+   // but duplicate names are possible in HTML
+   // Therefore to work around the issue, enforce the correct index
+   var frm = document.getElementsByName('user_education')[0];
+   frm.submit(); // Submit the form
+   frm.reset();  // Reset all form data
+   return false; // Prevent page refresh
+}
+
+function addAnotherExperienceForm() {
+   var frm = document.getElementsByName('user_experience')[0];
+   frm.submit(); // Submit the form
+   frm.reset();  // Reset all form data
+   return false; // Prevent page refresh
+}
+
+function addAnotherPortfolioForm() {
+   var frm = document.getElementsByName('user_portfolio')[0];
+   frm.submit(); // Submit the form
+   frm.reset();  // Reset all form data
+   return false; // Prevent page refresh
+}
+
+function submitEducationForm() {
+   var frm = document.getElementsByName('user_education')[0];
+   frm.submit(); // Submit the form
+   // return false; // Prevent page refresh
+}
+
+function submitExperienceForm() {
+   var frm = document.getElementsByName('user_experience')[0];
+   frm.submit(); // Submit the form
+   // return false; // Prevent page refresh
+}
+
+function submitPortfolioForm() {
+   var frm = document.getElementsByName('user_portfolio')[0];
+   frm.submit(); // Submit the form
+   // return false; // Prevent page refresh
+}
+
+// var max_fields = 5; //maximum input boxes allowed
+// var wrapper = $(".education_wrap"); //Fields wrapper
+// var add_button = $("#add_education"); //Add button ID
+
+// $(add_button).click(function(e) {
+//   var total_fields = wrapper[0].childNodes.length;
+//   alert(total_fields < max_fields);
+//   //if (total_fields < max_fields) { 
+//     $(wrapper).append('<p style="font-weight:bold;">Institute Name<span class="required">*</span></p><div class="item"><input type="text" id="institute" name="institute" placeholder="Institute Name" required/></div><p style="font-weight:bold;">Degree Name<span class="required">*</span></p><div class="item"><input type="text" id="degree" name="degreen" placeholder="Bachelor of Engineering in Software Engineering, etc." required/></div><p style="font-weight:bold;">From<span class="required">*</span></p><div class="item"><input type="date" id="from_date" name="from_date" value="2020-07-22" required/></div><p style="font-weight:bold;">To<span class="required">*</span></p><div class="item">                    <input type="date" id="to_date" name="to_date" value="2020-07-22" required/></div></div>'); //add input box
+//   //}
+// });
+// });
+</script>
+

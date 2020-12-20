@@ -1,0 +1,240 @@
+{% load static %}
+
+<!DOCTYPE html>
+{% include 'base.html' %}
+
+<body>
+<div class="wrapper row1">    <!-- #########1111111111####################################################################################### -->
+		{% include 'partials/topbar.html' %}
+
+
+<!-- #################################NAV BAR 2 ############################################################### -->
+
+<div class="tab-content"> <!--2 -->
+    <div id="freelancer_dashboard" class="tab-pane fade in active">
+      <div class="wrapper row1"> <!--4 -->
+		{% include 'partials/navbar_freelancer.html' %}
+
+
+<!-- content -->
+      <div class="wrapper row2">
+        <div id="container">
+          <h3>{{project.project_name}}</h3>
+          <section id="intro" class="clear">         
+            <!-- <p>You can easily view the projects categorized into three categories.</p> -->
+      <!-- ################################# project details ############################################################### -->
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#project_details">Details</a></li>
+                <li><a data-toggle="tab" href="#show_proposals">Proposals</a></li>
+              </ul>
+
+              <div class="tab-content">
+                <div id="project_details" class="tab-pane fade in active">
+                    <div class="boxborder">
+                      <div class="leftside">
+                        <!-- about employer -->
+                        <div class="aboutemployer">
+                          <h4 style="font-weight:bold;">About Employer</h4><hr>
+                          <p><span class="fa fa-map-marker"></span>       Location</p>
+                            <p><span class="fa fa-desktop"></span>   3 Projects Completed</p>
+                              <p><span class="fa fa-user"></span>    Rating (x Reviews)</p>
+                                <p><span class="fa fa-clock-o"></span>    Member since October 25, 2018</p>
+
+                          <h4 style="font-weight:bold; padding-top:10px;">Employer Verification</h4><hr>
+                          <p><span class="fa fa-id-card"></span>       Identity Verified</p>
+                            <p><span class="fa fa-shield"></span>       Payment Method Verified</p>
+                            <p><span class="fa fa-envelope"></span>   Email Verified</p>
+                              <p><span class="fa fa-user"></span>    Profile Completed</p>
+                                <p><span class="fa fa-phone"></span>    Phone Number Verified</p>
+                        </div>
+
+
+                        <div class="bidsdetails">
+                          <p>Total Bids Left&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{bid_data.count}}</p>
+                          <p>Average Bid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PKR {{average_bid}}</p>
+                        </div>
+
+                        <div class="bidswriting">
+                          <h4 style="text-align:center;font-weight:bold;">Write a winning bid</h4><hr>
+                          <p>Nullamlacus dui ipsum conseque loborttis non euisque morbi penas dapibulum orna Nullamlacus dui ipsum conseque loborttis non euisque morbi penas dapibulum orna Nullamlacus dui ipsum conseque loborttis non euisque morbi penas dapibulum orna Nullamlacus dui ipsum conseque loborttis non euisque morbi penas dapibulum orna </p>
+                        </div>
+                    </div>
+                  </div>
+                  
+            
+                    <div class="boxborder">
+                      <div class="rightside">
+                        <div class="projectdetails">
+                          <!-- project details -->
+                          <h4 style="font-weight:bold; padding-top: 20px;">Project Details</h4>
+                          <hr style="height:1px;margin-top:0px;padding-top:0px;background-color:#20B2AA;">
+                          <p style="font-weight: bold;">PKR {{project.project_payment}}/-</p>                          
+                          <p>{{project.project_details}}</p>
+
+                          <h5 style="font-weight:bold; padding-top: 20px;">Skills Required</h5><hr>
+                          <p class="skillslabel">
+                                  {% for tag in project.project_tags_as_list %}
+
+                                <span class="label label-default">{{tag}}</span>&nbsp;
+                                  {% endfor %}
+
+                          </p>
+                          
+
+                          <p>Project ID:{{project.id}}</p>
+                        </div>
+
+
+                        <form name="place_a_bid_form" action="{% url 'place_bid'  project.id %}" method="POST">
+                        {% csrf_token %}
+
+                        <div class="placebids">
+                          <!-- project details -->
+
+                          <h4 style="font-weight:bold;">Place a Bid on this Project</h4><hr style="height:1px;margin-top:0px;padding-top:0px;background-color:#20B2AA;">
+                            <p style="font-weight:bold;">Bid Amount:<span class="required">*</span></p>
+                            <div class="bid-text">
+                              <label class="static-value">PKR&nbsp;</label>
+                              <input type="Number" placeholder="Bid Amount" name="bid_amount" id="bid_amount" step="100"/>                              
+                            </div> 
+                            <br>
+
+                            <p style="font-weight:bold;">This project will be delivered in:<span class="required">*</span></p>
+                              <input type="Number" placeholder="Estimated days " id="bid_days"  name="bid_days" step="1"/>
+                          </div>
+
+                          <div class="proposaldetails">
+                            <p style="font-weight:bold;">Proposal Details:<span class="required">*</span></p>
+                            <textarea id="proposal_details" name="proposal_details" placeholder="What makes you the best candidate for this project? (Atleast 100 words) " rows="6" cols="65"></textarea>
+                            <div class="placebidbutton">
+                           <input type="hidden" id="project_id_val" name="project_id_val" value="{{project.id}}"> 
+          
+                            <button id="place_a_bid"  type="submit" class="btn btn-primary" href="">Place Bid</button>
+                          </div>
+
+                          <div class="clear"></div>
+                          </div>
+
+                          <!-- <div class="projectmilestones"> -->
+                            <!-- <h5 style="font-weight:bold;">Project Milestones</h5>
+                            <p>Attach milestones file here:</p>                    
+                            <input style="background-color:white;" type="file" name="bid_file" accept="file/*"> -->
+
+                            <!-- <div class="bid-text">
+                              <input type="number" style="float:left; overflow:hidden;width:30%" placeholder="Bid Amount" name="bid_milestone_amount" id="bid_milestone_amount" step="1"/>
+                              <label for="bid_milestone_amount" class="static-value">PKR&nbsp;</label>
+                            </div> 
+                            <input type="text" style="float:left; overflow:hidden;width:70%;" placeholder="Add a project milestone " id="project_milestone1" /><br>
+                            <button style="background-color:gray !important; color:white; font-weight:bold;margin-top: 10px;" id="add_another_milestone" class="btn btn-primary">Add another Milestone</button> -->
+
+                          
+                          <!-- </div> -->
+
+                          </form>
+
+                          
+                        </div>
+                      </div>
+                      {% include 'partials/alert.html' %}
+
+                    </div>
+            
+
+                <div id="show_proposals" class="tab-pane fade">
+                  <div class="boxborder">
+                    <div class="leftside">
+                      <div class="bidsdetails">
+                        <p style="font-weight: bold;">Budget</p>
+                        <p>PKR {{project.project_payment}}</p>
+                        <p style="font-weight: bold;">Total Bids</p>
+                        <p>{{bid_data.count}}</p>
+                        <p style="font-weight: bold;">Average Bid</p>
+                        <p>{{average_bid }}</p>
+                        </div>
+                    </div>
+
+                    <div class="rightside">
+                      <!-- loads all the bids on the project -->
+                      <div class="bidders">
+                        <section id="comments">
+                          {% if bid_data.count == 0 %}
+                            <li class="comment_odd">
+                              <article>
+                                <header>
+                                  <figure><img src="../images/demo/avatar.gif" width="32" height="32" alt=""></figure>
+                                  <p style="font-weight: bold;">No bids to show</p>
+                                  <time datetime="2000-04-06T08:15+00:00">{{bid.bid_created_at}}</time>
+                                </header>
+
+                              </article>
+                            </li>
+
+                          {% else %}
+
+                          <ul>
+                        {% for bid in bid_data %}
+                             {% if forloop.counter0|divisibleby:2 == 0 %}
+                            <li class="comment_odd">
+                              <article>
+                                <header>
+                                  <figure><img src="../images/demo/avatar.gif" width="32" height="32" alt=""></figure>
+                                  <address>
+                                  By <a href="#">{{bid.user.username}}</a>
+                                  </address>
+                                  <time datetime="2000-04-06T08:15+00:00">{{bid.bid_created_at}}</time>
+                                </header>
+                                <section>
+                                  <p style="font-weight: bold;">Bid Details: </p><p>{{bid.bid_description}}</p>
+                                  <p style="font-weight: bold;">Bid Amount: </p><p>{{bid.bid_payment}}</p>
+                                  <p style="font-weight: bold;">Estimated Days: </p><p>{{bid.bid_estimated_days}}</p>
+                                </section>
+                              </article>
+                            </li>
+                            {% else %}
+
+                            <li class="comment_even">
+                              <article>
+                                <header>
+                                  <figure><img src="../images/demo/avatar.gif" width="32" height="32" alt=""></figure>
+                                  <address>
+                                  By <a href="#">{{bid.user.username}}</a>
+                                  </address>
+                                  <time datetime="2000-04-06T08:15+00:00">{{bid.bid_created_at}}</time>
+                                </header>
+                                <section>
+                                  <p style="font-weight: bold;">Bid Details: </p><p>{{bid.bid_description}}</p>
+                                  <p style="font-weight: bold;">Bid Amount: </p><p>{{bid.bid_payment}}</p>
+                                  <p style="font-weight: bold;">Estimated Days: </p><p>{{bid.bid_estimated_days}}</p>
+                                </section>
+                              </article>
+                            </li>
+                          {% endif %}
+                        {% endfor %}
+                       {% endif %}
+
+                          </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </section>
+          </div>
+        </div>
+      </div>
+ <!--end of my projects page-->
+
+</div>
+</div>
+</div>
+
+
+<!-- <script>
+function on_click_milestones() {
+  document.getElementById("add_another_milestone").innerHTML = "<p>This example demonstrates how to assign an  event to a p element.</p>";
+}
+</script> -->
+
+
+</body>
+{% include 'partials/footer.html' %}
+{% include 'partials/message_timeout.html' %}

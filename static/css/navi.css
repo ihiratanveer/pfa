@@ -1,0 +1,75 @@
+@charset "utf-8";
+
+nav ul{margin:0; padding:0; list-style:none;}
+
+/* ----------------------------------------------Top Navigation------------------------------------- */
+
+#topnav .nav-tabs{border:none; font-size:14px; float:right; clear:right; padding-top:20px;}
+#topnav .nav-tabs li{text-decoration: none !important;float:left;position:relative; margin-right:14px; padding-right:15px; border-right:1px solid #666666;}
+#topnav .nav-tabs li a:link, #topnav li a:visited, #topnav li a:hover{display:block; margin:0; padding:0; font-weight:normal; text-decoration: none !important;}
+#topnav .nav-tabs li a:hover, #topnav li.active a{border:none; color:#20B2AA; background-color:#FFFFFF; text-decoration: none !important;}
+#topnav .nav-tabs li.last{margin:0; padding:0; border:none;}
+
+/* Top navigation for smaller resolutions */
+
+#topnav .mnav{display:block; position:relative; width:100%; height:30px; margin:0 auto; padding:5px; color:#FFFFFF; background-color:#232323; border:1px solid #494949; cursor:pointer; outline:none;}
+#topnav .mnav option{margin:5px 10px; cursor:pointer;}
+#topnav .mnav optgroup{margin-bottom:10px;}
+#topnav .mnav optgroup[label]{margin-left:12px; text-transform:uppercase; font-style:normal; font-weight:normal;}
+#topnav .mnav optgroup option{padding:0; text-transform:none;}
+
+/* ----------------------------------------------Second navbar Navigation------------------------------------- */
+#topnav2 .nav-tabs {border:none; font-size:14px; float:left; clear:left; }
+#topnav2 .nav-tabs li{float:left; margin-right:14px; padding-right:15px; border-right:1px solid #666666;}
+#topnav2 .nav-tabs li a:link, #topnav2 li a:visited, #topnav2 li a:hover{display:block; margin:0; padding:0; font-weight:normal;}
+#topnav2 .nav-tabs li a:hover, #topnav2 li.active a{ border:none; color:#20B2AA; background-color:#FFFFFF;}
+#topnav2 .nav-tabs li.last{margin:0; padding:0; border:none;}
+
+.rightnav2{position:relative;float:right;margin-right:14px; padding-right:15px;}
+.rightnav1free button{margin-right:0px !important;background-color:#DCDCDC !important;color:white !important; position:relative;float:right;margin-right:14px; padding-right:15px; border-radius-top-right:1px !important; border-radius-bottom-right:1px !important; }
+.rightnav1emp button{color:white !important;background-color:#20B2AA !important;margin-right:0px !important; position:relative;float:right;margin-right:14px; padding-right:15px; border-radius-top-right:1px !important; border-radius-bottom-right:1px !important; }
+
+.rightnav11free button{color:white !important; background-color:#20B2AA !important;margin-left:0px !important;position:relative;float:right;margin-right:14px; padding-right:15px; border-radius-top-left:1px !important; border-radius-bottom-left:1px !important;}
+.rightnav11emp button{background-color:#DCDCDC !important; color:white !important;margin-right:0px !important; position:relative;float:right;margin-right:14px; padding-right:15px; border-radius-top-right:1px !important; border-radius-bottom-right:1px !important; }
+
+.leftnav2{float:left;}
+
+#topnav2 .mnav{display:block; position:relative; width:100%; height:30px; margin:0 auto; padding:5px; color:#FFFFFF; background-color:#232323; border:1px solid #494949; cursor:pointer; outline:none;}
+#topnav2 .mnav option{margin:5px 10px; cursor:pointer;}
+#topnav2 .mnav optgroup{margin-bottom:10px;}
+#topnav2 .mnav optgroup[label]{margin-left:12px; text-transform:uppercase; font-style:normal; font-weight:normal;}
+#topnav2 .mnav optgroup option{padding:0; text-transform:none;}
+ /* ----------------------------------------------Icons------------------------------------- */
+.icon {
+    float: left;
+    color: #20B2AA;
+    size: 16px;
+    position: relative;
+/*    right: 10px;
+    top:10px;*/
+}  
+
+/* ----------------------------------------------Column Navigation------------------------------------- */
+
+#container aside nav{display:block; width:100%; margin-bottom:30px;}
+#container aside nav ul{margin:0; padding:0; list-style:none;}
+#container aside nav li{margin:0 0 3px 0; padding:0;}
+#container aside nav ul ul, #container aside nav ul ul ul, #container aside nav ul ul ul ul, #container aside nav ul ul ul ul ul{border-top:none; padding-top:0;}
+#container aside nav a{display:block; margin:0; padding:5px 10px 5px 20px; color:#666666; background:url("images/orange_file.gif") no-repeat 10px center #FFFFFF; text-decoration:none; border-bottom:1px dotted #666666;}
+#container aside nav a:hover{color:#20B2AA; background-color:#FFFFFF;}
+#container aside nav ul ul a, #container aside nav ul ul ul a, #container aside nav ul ul ul ul a, #container aside nav ul ul ul ul ul a{background:url("images/black_file.gif") no-repeat #FFFFFF;}
+#container aside nav ul ul a{padding-left:40px; background-position:30px center;}
+#container aside nav ul ul ul a{padding-left:50px; background-position:40px center;}
+#container aside nav ul ul ul ul a{padding-left:60px; background-position:50px center;}
+#container aside nav ul ul ul ul ul a{padding-left:70px; background-position:60px center;}
+
+/* ----------------------------------------------Pagination------------------------------------- */
+
+#container .pagination{display:block; width:100%; text-align:center; clear:both; font-family:Arial;}
+#container .pagination ul{margin:0; padding:0; list-style:none;}
+#container .pagination li{display:inline;}
+#container .pagination strong{font-weight:normal;}
+#container .pagination .next{margin:0;}
+#container .pagination a, #container .pagination #container .pagination .splitter strong{display:inline-block; padding:2px 6px; margin:0 2px 0 0;}
+#container .pagination .current strong{display:inline-block; padding:2px 6px; margin:0 2px 0 0; color:#20B2AA;font-weight: bold;}
+#container .pagination a{border:1px solid #DFDFDF;}
